@@ -1,4 +1,3 @@
-# unity-mmorpg-prototype
 # Unity RPG Projekt (Prototyp)
 
 Dieses Projekt entstand aus persönlichem Interesse an Game Development.  
