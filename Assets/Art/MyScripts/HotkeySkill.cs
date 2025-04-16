@@ -1,3 +1,42 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       HotkeySkill.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript steuert die Fähigkeiten, die Hotkeys im UI zugewiesen
+ *               sind. Es ermöglicht Drag & Drop von Skills, visualisiert Abklingzeiten
+ *               und führt verschiedene Angriffsarten abhängig vom Skill-Typ aus.
+ *
+ * Hauptfunktionen:
+ * - Unterstützt Drag & Drop im UI zur Neuzuweisung von Skillslots
+ * - Führt Skills wie Fireball, Manashot, Ice Attack, Chain Lightning etc. aus
+ * - Nutzt das Mana-System und Cooldown-Timer
+ * - Schadensberechnung mit kritischen Treffern
+ * - Unterstützt VFX wie Electro Slash und Lightning Effekte
+ * - Flexible Erweiterung durch `SkillName` Enum oder Skill-Klassen
+ *
+ * Unterstützt:
+ * - Projektilangriffe
+ * - Flächenangriffe (AoE)
+ * - Raycast-basierte Angriffe
+ * - Nahkampfangriffe mit VFX
+ * - Teleportation
+ *
+ * Dependencies:
+ * - PlayerController.cs
+ * - EnemyController.cs
+ * - Skill.cs
+ * - Projectile.cs
+ *
+ * Hinweise:
+ * - Dieses Skript kann in der UI für eine Hotbar verwendet werden
+ * - SkillPrefabs müssen im Inspector zugewiesen werden
+ * - SkillCooldown und Mana werden dynamisch über PlayerController gesteuert
+ * ------------------------------------------------------------------------------
+ */
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

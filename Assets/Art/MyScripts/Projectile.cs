@@ -1,3 +1,34 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       Projectile.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript steuert das Verhalten von Projektilen im Spiel,
+ *               einschließlich Bewegung, Schadensberechnung und Kollisionslogik.
+ *
+ * Hauptfunktionen:
+ * - Initialisierung der Flugrichtung und Schadensmultiplikatoren
+ * - Konstante Bewegung des Projektils entlang einer festgelegten Richtung
+ * - Fixierung der Y-Position für flache Flugbahnen (z. B. bei magischen Geschossen)
+ * - Kollisionsabfrage mit Gegnern und Schadensübertragung
+ *
+ * Unterstützt:
+ * - Anpassbare Fluggeschwindigkeit und Basisschaden
+ * - Multiplikatoren für stärkere Skills
+ * - Interaktion mit EnemyController zur Schadensverarbeitung
+ *
+ * Dependencies:
+ * - EnemyController.cs
+ *
+ * Hinweise:
+ * - Das Projektil zerstört sich nach erfolgreicher Kollision automatisch
+ * - Sollte mit einem Collider (Trigger) und Rigidbody verwendet werden
+ * - Die Richtung wird beim Spawn durch `Initialize()` gesetzt
+ * ------------------------------------------------------------------------------
+ */
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

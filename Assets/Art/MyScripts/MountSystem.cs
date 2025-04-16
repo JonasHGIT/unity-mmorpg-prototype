@@ -1,3 +1,36 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       MountSystem.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript verwaltet das Auf- und Absteigen des Spielers auf ein Reittier.
+ *               Es steuert den Zustand des Reittiers, gewährt dem Spieler einen
+ *               Geschwindigkeitsschub während des Reitens und ermöglicht das Absteigen.
+ *
+ * Hauptfunktionen:
+ * - Ermöglicht dem Spieler das Aufsteigen und Absteigen vom Reittier durch Drücken der "R"-Taste
+ * - Erhöht die Bewegungsgeschwindigkeit des Spielers während des Reitens
+ * - Stellt sicher, dass der Spieler und das Reittier korrekt positioniert werden
+ * - Simuliert eine Übergangszeit (Mount-Time) beim Aufsteigen
+ * - Verwaltet das Setzen und Entfernen des Reittiers als Kind des Spielers
+ *
+ * Unterstützt:
+ * - Übergänge zwischen Reittier und Spieler mit visuellen Anpassungen
+ * - Kollisionsabfragen für die korrekte Positionierung des Reittiers
+ * - Geschwindigkeitspassive für den Spieler während des Reitens
+ *
+ * Dependencies:
+ * - PlayerController.cs
+ *
+ * Hinweise:
+ * - Das Reittier wird nur sichtbar gemacht, wenn der Spieler tatsächlich aufsteigt
+ * - Das Skript verwendet die Unity InputSystem-Bibliothek für die Steuerung
+ * - Das Mount-System kann in andere Systeme wie Quests oder Fähigkeiten integriert werden
+ * ------------------------------------------------------------------------------
+ */
+
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;

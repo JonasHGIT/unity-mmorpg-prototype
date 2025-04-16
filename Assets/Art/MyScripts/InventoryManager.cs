@@ -1,3 +1,11 @@
+/*
+ * InventoryManager.cs
+ * 
+ * Author: Jonas Hammer
+ * Description: Verwalten von Inventar, Seitenumblätterung und Währungslogik. Ermöglicht das Hinzufügen, Zerstören und Verkaufen von Items im Inventar.
+ * Last Edited: 16. April 2025
+ */
+
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;

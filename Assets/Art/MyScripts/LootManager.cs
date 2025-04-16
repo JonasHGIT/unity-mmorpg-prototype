@@ -1,3 +1,41 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       LootManager.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript verwaltet die Generierung und Darstellung von Loot.
+ *               Es entscheidet, ob ein Item gedroppt wird, wählt ein zufälliges
+ *               Item aus der Loot-Tabelle und erzeugt visuelle Effekte basierend
+ *               auf der Seltenheit.
+ *
+ * Hauptfunktionen:
+ * - Zufällige Auswahl von Items anhand konfigurierter Dropchancen
+ * - Automatische Zuweisung von Seltenheiten (Common bis Legendary)
+ * - Spawnt Items als 3D-Modell oder 2D-Sprite
+ * - Fügt automatisch Collider, Rigidbody und VFX hinzu
+ * - Gibt passende UI-Hintergründe je nach Seltenheit zurück
+ *
+ * Unterstützt:
+ * - Dynamische Skalierung von 2D-Sprites
+ * - Drop-Chance-Berechnung auf Basis von Prozentwerten
+ * - Integration mit InventoryManager und ItemPickup
+ * - VFX- und UI-Unterstützung je nach Item-Rarity
+ *
+ * Dependencies:
+ * - GameItem.cs
+ * - Rarity Enum
+ * - InventoryManager.cs
+ * - ItemPickup.cs
+ *
+ * Hinweise:
+ * - Drop-Chancen und Loot-Items müssen im Inspector konfiguriert werden
+ * - Hintergrund- und VFX-Prefabs müssen zugewiesen sein
+ * - DropLoot() kann an Gegner-Tode oder Events gebunden werden
+ * ------------------------------------------------------------------------------
+ */
+
+
 using System.Collections.Generic;
 using UnityEngine;
 

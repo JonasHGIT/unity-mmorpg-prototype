@@ -1,61 +1,63 @@
+/*
+ * CanvasController.cs
+ *
+ * Author: Jonas Hammer
+ * Description: Steuerung und Umschalten verschiedener UI-Canvas-Elemente per Tastendruck.
+ *              Ermöglicht z.B. das Öffnen/Schließen von Inventar, Shop, Skilltree usw.
+ * Last Edited: 16. April 2025
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CanvasController : MonoBehaviour
 {
-    // Referenzen zu den Canvas GameObjects
-    public GameObject canvasPlayerStats;
-    public GameObject canvasShop;
-    public GameObject canvasSkilltree;
-    public GameObject canvasInventory;
-    public GameObject miniMap;
-    public GameObject canvasOptions;
+    [Header("Canvas References")]
+    public GameObject canvasPlayerStats;    // C-Taste
+    public GameObject canvasShop;           // T-Taste (zusammen mit Inventory)
+    public GameObject canvasSkilltree;      // S-Taste
+    public GameObject canvasInventory;      // I- oder T-Taste
+    public GameObject miniMap;              // M-Taste
+    public GameObject canvasOptions;        // Escape-Taste
 
     void Update()
     {
-        // Überprüfen, ob die Taste "C" gedrückt wird
+        // Toggle PlayerStats Canvas (Taste C)
         if (Input.GetKeyDown(KeyCode.C))
         {
-            // Canvas 1 aktivieren/deaktivieren
-            canvasPlayerStats.SetActive(!canvasPlayerStats.activeSelf); // Umschalten des Zustands
+            canvasPlayerStats.SetActive(!canvasPlayerStats.activeSelf);
         }
 
-        // Überprüfen, ob die Taste "T" gedrückt wird
+        // Toggle Shop und Inventory gleichzeitig (Taste T)
         if (Input.GetKeyDown(KeyCode.T))
         {
-            // Canvas 2 aktivieren/deaktivieren
-            canvasShop.SetActive(!canvasShop.activeSelf); // Umschalten des Zustands
-            canvasInventory.SetActive(!canvasInventory.activeSelf); // Umschalten des Zustands
+            canvasShop.SetActive(!canvasShop.activeSelf);
+            canvasInventory.SetActive(!canvasInventory.activeSelf);
         }
 
-        // Überprüfen, ob die Taste "S" gedrückt wird
+        // Toggle Skilltree Canvas (Taste S)
         if (Input.GetKeyDown(KeyCode.S))
         {
-            // Canvas 3 aktivieren/deaktivieren
-            canvasSkilltree.SetActive(!canvasSkilltree.activeSelf); // Umschalten des Zustands
+            canvasSkilltree.SetActive(!canvasSkilltree.activeSelf);
         }
 
-        // Überprüfen, ob die Taste "I" gedrückt wird
+        // Toggle Inventory unabhängig (Taste I)
         if (Input.GetKeyDown(KeyCode.I))
         {
-            // Canvas 4 aktivieren/deaktivieren
-            canvasInventory.SetActive(!canvasInventory.activeSelf); // Umschalten des Zustands
+            canvasInventory.SetActive(!canvasInventory.activeSelf);
         }
 
-        // Überprüfen, ob die Taste "M" gedrückt wird
+        // Toggle MiniMap (Taste M)
         if (Input.GetKeyDown(KeyCode.M))
         {
-            // Canvas 5 aktivieren/deaktivieren
-            miniMap.SetActive(!miniMap.activeSelf); // Umschalten des Zustands
+            miniMap.SetActive(!miniMap.activeSelf);
         }
 
-        // Überprüfen, ob die Taste "Esc" gedrückt wird
+        // Toggle Options (Taste ESC)
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // Canvas 6 aktivieren/deaktivieren
-            canvasOptions.SetActive(!canvasOptions.activeSelf); // Umschalten des Zustands
+            canvasOptions.SetActive(!canvasOptions.activeSelf);
         }
     }
 }
-

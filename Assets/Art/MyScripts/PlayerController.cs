@@ -1,3 +1,46 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       PlayerController.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript verwaltet die Bewegungen, Angriffe, Gesundheits- und Mana-Werte sowie
+ *               das Level-Up-System des Spielers. Es enthält auch die Interaktion mit der Welt
+ *               (Bewegung zu Klickpunkten, Interaktion mit Objekten, Angriff auf Feinde) und die
+ *               Darstellung von Level-Up-VFX und UI-Elementen.
+ *
+ * Hauptfunktionen:
+ * - Steuerung der Spielerbewegung über Klick-Input
+ * - Angriff auf Feinde und Berechnung von Schaden (inkl. Kritischen Treffern)
+ * - Verwaltung von Gesundheit, Mana, und anderen Spielerstatistiken
+ * - Level-Up System und Anwendung von Stat-Wachstum bei jedem Levelaufstieg
+ * - Anzeigen von Level-Up VFX und UI-Canvas
+ * - Interaktionen mit der Welt und anderen Objekten (z.B. Angreifen, Klicken, Fokussierung auf Objekte)
+ *
+ * Unterstützt:
+ * - Spielerbewegung und -animationen mit NavMeshAgent
+ * - Angriffsmechanik (Berechnung von Schaden, Kritischen Treffern und Anzeige von Schadens-Popups)
+ * - Status-Updates für Gesundheit, Mana, Angriffsgeschwindigkeit und mehr
+ * - Level-Up Mechanik mit visuellen und UI-Komponenten (VFX, Level-Up Canvas)
+ *
+ * Abhängigkeiten:
+ * - ExperienceManager.cs (für das Spieler-Level und Erfahrung)
+ * - PlayerStatsManager.cs (für die Anzeige der Spielerstatistiken)
+ * - Skilltree.cs (für die Aktualisierung des Skilltrees beim Level-Up)
+ * - SpawnsDamagePopups.cs (für die Anzeige von Schadens-Popups)
+ * - Manabar.cs (für die Aktualisierung der Mana-Leiste)
+ * - NavMeshAgent (für die Navigation des Spielers)
+ * - Animator (für Animationen des Spielers)
+ *
+ * Hinweise:
+ * - Das Skript benötigt eine Referenz auf den ExperienceManager und PlayerStatsManager, um korrekt zu funktionieren.
+ * - Der Spieler bewegt sich durch Mausklicks auf den Boden oder Interaktionsobjekte, und es wird die Animation für das Gehen/Idle abgespielt.
+ * - Level-Ups führen zu einer Erhöhung von wichtigen Stats wie Gesundheit und Schaden und zeigen visuelle Effekte und UI-Updates.
+ * - Dieses Skript ist auch für das Anzeigen von Schadens-Popups beim Angreifen verantwortlich.
+ * ------------------------------------------------------------------------------
+ */
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

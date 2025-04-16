@@ -1,3 +1,26 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       InventorySlot.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Repräsentiert einen Slot im Inventarsystem. Unterstützt das
+ *               Platzieren und Tauschen von Items via Drag & Drop.
+ *
+ * Funktionen:
+ * - Prüft beim Drop, ob der Slot leer ist
+ * - Unterstützt Item-Swap bei belegtem Slot
+ * - Platziert das gedroppte Item korrekt im UI
+ *
+ * Dependencies:
+ * - InventoryItem.cs
+ *
+ * Hinweise:
+ * - Diese Basisklasse kann für spezialisierte Slots erweitert werden
+ * ------------------------------------------------------------------------------
+ */
+
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 

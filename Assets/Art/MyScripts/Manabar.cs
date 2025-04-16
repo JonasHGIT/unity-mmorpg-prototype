@@ -1,3 +1,36 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       Manabar.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript verwaltet die Anzeige und Regeneration des Manabalkens 
+ *               für den Spieler. Es sorgt dafür, dass die Mana-Anzeige (über eine UI-Bar)
+ *               ständig aktualisiert wird und stellt sicher, dass das Mana des Spielers
+ *               nicht über das Maximum hinaus geht und regeneriert wird, wenn es unter
+ *               dem Maximalwert liegt.
+ *
+ * Hauptfunktionen:
+ * - Aktualisierung des Mana-Werts des Spielers aus dem PlayerController
+ * - Regeneration des Mana-Werts basierend auf einer festgelegten Geschwindigkeit
+ * - Sicherstellung, dass der Mana-Wert zwischen 0 und dem Maximalwert bleibt
+ * - Aktualisierung der UI, um den aktuellen Mana-Wert und das Maximum anzuzeigen
+ *
+ * UI-Elemente:
+ * - _manaBarFill (Image): UI-Komponente, die den aktuellen Mana-Wert visuell darstellt
+ * - _manaText (TMP_Text): Textkomponente, die den aktuellen Mana-Wert in der Form "XMP / YMP" anzeigt
+ *
+ * Abhängigkeiten:
+ * - PlayerController.cs (für den Zugriff auf die aktuellen Mana-Werte des Spielers)
+ *
+ * Hinweise:
+ * - Das Skript geht davon aus, dass die PlayerController-Komponente auf einem GameObject namens "Player_Capsule_Mesh" vorhanden ist.
+ * - Die Mana-Regeneration wird kontinuierlich im Update-Loop durchgeführt und ist an die Zeit (Time.deltaTime) gebunden.
+ * - Es wird sichergestellt, dass der Mana-Wert niemals über das Maximum hinausgeht oder unter 0 fällt.
+ * ------------------------------------------------------------------------------
+ */
+
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;

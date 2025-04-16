@@ -1,3 +1,11 @@
+/*
+ * EnemySpawner.cs
+ * 
+ * Author: Jonas Hammer
+ * Description: Spawnt Gegner in einer zufälligen Reihenfolge an vorgegebenen Spawn-Punkten. Verhindert, dass zu viele Gegner gleichzeitig existieren.
+ * Last Edited: 16. April 2025
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

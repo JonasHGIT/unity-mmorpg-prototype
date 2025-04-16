@@ -1,3 +1,38 @@
+/*
+ * ------------------------------------------------------------------------------
+ * !!!WIRD AKTUELL NICHT VERWENDET!!!
+ *
+ * Script:       TimeManager.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript verwaltet den Tag-Nacht-Zyklus und die Zeit im Spiel. 
+ *               Es steuert die Änderungen der Tageszeit, des Himmels und der globalen Beleuchtung 
+ *               sowie das Anzeigen der aktuellen Zeit im UI.
+ *
+ * Hauptfunktionen:
+ * - Steuerung der Stunden und Minuten für den Tag-Nacht-Zyklus.
+ * - Interpolation von Himmeltexturen und Beleuchtungseinstellungen für den Übergang zwischen Tag und Nacht.
+ * - Anzeige der aktuellen Uhrzeit im UI.
+ * - Verwendung von Post-Processing für Farbkorrekturen während des Übergangs.
+ *
+ * UI-Elemente:
+ * - clockText (TextMeshProUGUI): Zeigt die aktuelle Uhrzeit im Format "HH:MM Uhr" an.
+ *
+ * Abhängigkeiten:
+ * - Light (Global Light): Das Licht im Spiel, das den Tagesverlauf simuliert.
+ * - PostProcessVolume und ColorAdjustments (Post-Processing): Für die Farbänderung während des Tag-Nacht-Übergangs.
+ * - Skybox Texturen: Verschiedene Texturen für den Himmel (Nacht, Sonnenaufgang, Tag, Sonnenuntergang).
+ * - Gradient: Verläufe für die Farbanpassungen zwischen Tag und Nacht.
+ *
+ * Wichtige Hinweise:
+ * - Der Tageszyklus wird durch das Ändern der Stunden und Minuten simuliert.
+ * - Die Zeit wird alle 60 Sekunden um eine Minute erhöht.
+ * - Bei Stundenänderungen (6, 8, 18, 22) werden Übergänge für den Himmel und die Beleuchtung eingeleitet.
+ * ------------------------------------------------------------------------------
+ */
+
+
 using System.Collections;
 using UnityEngine;
 using TMPro;

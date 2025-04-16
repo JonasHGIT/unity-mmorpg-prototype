@@ -1,3 +1,12 @@
+/*
+ * EnemyDamageLabel.cs
+ *
+ * Author: Jonas Hammer
+ * Description: Animiert und zeigt Schadenszahlen über Gegnern in einer geschwungenen Bezier-Animation an,
+ *              inklusive Farbverlauf und Rückgabe in einen Object Pool.
+ * Last Edited: 16. April 2025
+ */
+
 using System.Collections;
 using TMPro;
 using UnityEngine;

@@ -1,3 +1,43 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       TooltipManager.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript verwaltet das Anzeigen und Verwalten von Tooltipps, die beim Überfahren von Items im Inventar angezeigt werden.
+ *               Es zeigt detaillierte Informationen zu einem Item, einschließlich seiner Basiswerte und eventuellen Verzauberungen, und vergleicht diese mit einem ausgerüsteten Item, falls vorhanden.
+ * 
+ * Hauptfunktionen:
+ * - Zeigt detaillierte Tooltips an, wenn ein Item im Inventar oder der Ausrüstungsansicht überfahren wird.
+ * - Vergleicht die Werte des Items mit einem möglicherweise ausgerüsteten Item und zeigt Differenzen an.
+ * - Unterstützt das Anzeigen von Verzauberungen und deren Werten.
+ * - Passt die Schriftgröße der Tooltipps dynamisch basierend auf der Anzahl relevanter Werte an, um eine optimale Darstellung zu gewährleisten.
+ * 
+ * UI-Elemente:
+ * - `tooltip`: Das Haupttooltip, das angezeigt wird.
+ * - `tooltipDeco`: Ein dekoratives Element, das das Tooltip visuell unterstützt.
+ * - `tooltipText`: Der Textbereich für die Basiswerte des Items.
+ * - `enchantmentsText`: Der Textbereich für Verzauberungen des Items.
+ * - `sellValueText`: Der Textbereich für den Verkaufswert des Items.
+ * - `tooltipImage`: Das Bild des Items im Tooltip.
+ *
+ * Abhängigkeiten:
+ * - `GameItem`: Das Item-Objekt, das die Daten des Items enthält, das im Tooltip angezeigt wird.
+ * - `InventoryManager`: Ein Verwalter des Inventars, der den Zugriff auf ausgerüstete Items und Slots ermöglicht.
+ * - `EquipSlot`: Das Slot-Objekt in der Ausrüstungsansicht, in dem ausgerüstete Items platziert werden.
+ *
+ * Ereignis-Handling:
+ * - Zeigt das Tooltip für das ausgewählte Item an, wenn dieses überfahren wird.
+ * - Versteckt das Tooltip, wenn die Maus das Item verlässt.
+ * - Berechnet und zeigt Unterschiede zwischen dem aktuellen Item und dem ausgerüsteten Item an.
+ *
+ * Wichtige Hinweise:
+ * - Die Schriftgröße des Tooltips wird automatisch angepasst, basierend auf der Anzahl der relevanten Werte, um eine klare Darstellung zu gewährleisten.
+ * - Das System vergleicht die Werte eines Items mit einem ausgerüsteten Item, um Unterschiede anzuzeigen, und berücksichtigt Verzauberungen sowie deren Änderungen.
+ * ------------------------------------------------------------------------------
+ */
+
+
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;

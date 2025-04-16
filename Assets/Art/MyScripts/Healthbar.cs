@@ -1,3 +1,11 @@
+/*
+ * Healthbar.cs
+ *
+ * Author: Jonas Hammer
+ * Description: Aktualisiert die Gesundheitsanzeige des Spielers im UI.
+ * Last Edited: 16. April 2025
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;

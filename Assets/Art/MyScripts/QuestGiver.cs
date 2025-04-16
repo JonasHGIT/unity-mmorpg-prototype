@@ -1,3 +1,40 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       QuestGiver.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript ermöglicht es einem NPC, dem Spieler Quests zu vergeben.
+ *               Der Spieler kann mit dem NPC interagieren, um eine Liste von Quests 
+ *               anzuzeigen, aus denen er wählen kann. Jede Quest wird durch einen Button 
+ *               repräsentiert, und eine detaillierte Beschreibung der ausgewählten Quest 
+ *               wird angezeigt.
+ *
+ * Hauptfunktionen:
+ * - Zeigt Quests an, die der NPC dem Spieler anbieten kann.
+ * - Dynamische Erstellung von UI-Buttons für jede Quest.
+ * - Anzeige der Quest-Beschreibungen und Bereitstellung der Möglichkeit, die Quests zu schließen.
+ * - Automatische Positionierung der Buttons mit festen Abständen und manuellen Positionen.
+ *
+ * UI-Elemente:
+ * - questGiverCanvas (GameObject): Das Canvas, das die Quest-Auswahl und Beschreibung enthält.
+ * - questDescriptionText (TMP_Text): Das Textfeld zur Anzeige der Questbeschreibung.
+ * - buttonPrefab (GameObject): Ein Prefab, das als Vorlage für die Quest-Buttons dient.
+ * - buttonContainer (Transform): Der Container, in dem die Quest-Buttons erscheinen.
+ * - closeButtonPrefab (GameObject): Der Button, der das Quest-Giver-Canvas schließt.
+ *
+ * Abhängigkeiten:
+ * - Interactable.cs (Basis-Klasse für Interaktionen)
+ * - TextMeshPro (Für die Verwendung von TMP_Text in der UI)
+ * - Unity UI (Für die Erstellung und Handhabung von Buttons)
+ *
+ * Hinweise:
+ * - Stellen Sie sicher, dass alle UI-Elemente korrekt im Inspector zugewiesen sind.
+ * - Es gibt feste Positionen für die ersten 4 Buttons. Weitere Buttons werden automatisch positioniert.
+ * ------------------------------------------------------------------------------
+ */
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

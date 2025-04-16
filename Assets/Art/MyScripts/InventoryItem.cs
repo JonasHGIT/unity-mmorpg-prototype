@@ -1,3 +1,31 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       InventoryItem.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Repräsentiert ein einzelnes Item im Inventar-UI.
+ *               Unterstützt Drag & Drop, Stack-Zähler, Hintergrundanzeige nach
+ *               Seltenheit, Tooltip-Vorschau und automatisches Ausrüsten via
+ *               Doppelklick.
+ *
+ * Funktionen:
+ * - Anzeige von Item-Image, Stack-Zahl und Level
+ * - Drag & Drop zwischen Inventar und EquipSlots
+ * - Tooltip bei Mouseover
+ * - Doppelklick zum automatischen Ausrüsten
+ * - Dynamische Hintergrundanzeige basierend auf Item-Rarity
+ * - Seitenwechsel beim Drag-Hover über PageButton
+ *
+ * Dependencies:
+ * - InventoryManager
+ * - EquipSlot
+ * - GameItem (mit Typ & Level)
+ * - TooltipManager
+ *
+ * ------------------------------------------------------------------------------
+ */
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;

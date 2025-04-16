@@ -1,3 +1,39 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       HotkeyBarManager.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript verwaltet die Hotkey-Leiste im UI, mit der Skills
+ *               Spielern per Tastendruck oder Mausklick zugewiesen und ausgeführt
+ *               werden können. Es ermöglicht dynamisches Hinzufügen, Auswählen,
+ *               Ausführen und Tauschen von Fähigkeiten in den Slots.
+ *
+ * Hauptfunktionen:
+ * - Auswahl von Hotkey-Slots per Nummerntasten (1-5) oder Maustasten (LMB, RMB)
+ * - Ausführung des Skills im aktuell ausgewählten Slot
+ * - Dynamisches Hinzufügen neuer Skills zu freien Slots
+ * - Skill-Tausch (Swap) zwischen dem letzten Slot und dem Rechtsklick-Slot via Tab
+ * - Visuelle Rückmeldung bei Slot-Auswahl (via Select/Deselect)
+ *
+ * Unterstützt:
+ * - Manuelles Setzen von Mausklick-Slots (z. B. Slot 5 = LMB, Slot 6 = RMB)
+ * - Skill-Initialisierung über Prefabs
+ * - Flexible Erweiterung der Leiste durch HotkeySlot-Array
+ *
+ * Dependencies:
+ * - HotkeySlot.cs
+ * - HotkeySkill.cs
+ * - Skill.cs
+ *
+ * Hinweise:
+ * - HotkeySlots und SkillPrefab müssen im Unity Inspector zugewiesen werden
+ * - Skill-Ausführung wird durch `ExecuteSkill()` in HotkeySkill.cs gesteuert
+ * - Visuelles Feedback wird über `Select()` / `Deselect()` der Slots gegeben
+ * ------------------------------------------------------------------------------
+ */
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

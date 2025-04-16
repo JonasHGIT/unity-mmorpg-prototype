@@ -1,3 +1,35 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       Skilltree.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript verwaltet die Anzeige und Aktualisierung der UI-Elemente 
+ *               für das Skilltree-System des Spielers. Es zeigt die aktuellen Skillpunkte,
+ *               das Level des Spielers sowie den Fortschritt in der XP-Leiste an.
+ *
+ * Hauptfunktionen:
+ * - Anzeige der Skillpunkte und des aktuellen Levels des Spielers.
+ * - Fortschrittsanzeige in der XP-Leiste, die den Fortschritt von Level 1 bis 100 darstellt.
+ * - Aktualisierung der UI-Elemente bei einem Level-Up oder beim Erhalt von Skillpunkten.
+ *
+ * UI-Elemente:
+ * - xpBar (Image): Eine XP-Leiste, die den Fortschritt des Spielers anzeigt.
+ * - skillPointText (TMP_Text): Ein Textfeld zur Anzeige der aktuellen Skillpunkte.
+ * - levelText (TMP_Text): Ein Textfeld zur Anzeige des aktuellen Levels des Spielers.
+ *
+ * Abhängigkeiten:
+ * - PlayerController (Referenz auf den Spieler und dessen Level / Skillpunkte)
+ * - TextMeshPro (Für die Verwendung von TMP_Text zur Darstellung der Texte)
+ * - Unity UI (Für die Verwendung von Image und Text-UI-Komponenten)
+ *
+ * Hinweise:
+ * - Die XP-Leiste wird basierend auf dem aktuellen Level des Spielers aktualisiert.
+ * - Skillpunkte und Level des Spielers werden dynamisch im UI angezeigt.
+ * ------------------------------------------------------------------------------
+ */
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

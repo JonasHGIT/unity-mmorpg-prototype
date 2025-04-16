@@ -1,3 +1,17 @@
+/*
+ * CraftingManager.cs
+ *
+ * Author: Jonas Hammer
+ * Description: Verarbeitet die Logik für das Crafting-System. Kombiniert Items aus Slots, erstellt neue Items
+ *              basierend auf ihren Werten und stellt sie grafisch im UI dar.
+ * Last Edited: 16. April 2025
+ *
+ * Hinweise:
+ * - Verwendet CraftingSlot, InventoryManager, LootManager und GameItem
+ * - Das neue Item wird berechnet als Durchschnitt der kombinierten Items
+ * - Nur Items mit gleicher Seltenheit können kombiniert werden
+ */
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,10 +20,10 @@ using TMPro;
 public class CraftingManager : MonoBehaviour
 {
     public InventoryManager inventoryManager;
-    public CraftingSlot[] craftingSlots; // Die vier Slots für das Crafting
-    public GameObject inventoryItemPrefab; // Das Prefab für die InventoryItems
-    public TextMeshProUGUI craftButtonText;
-    public Transform craftingResultSlot; // Slot für das resultierende Item
+    public CraftingSlot[] craftingSlots;                 // Die vier Slots für das Crafting
+    public GameObject inventoryItemPrefab;               // Prefab für das UI-Element eines Items
+    public TextMeshProUGUI craftButtonText;              // Der Buttontext, z. B. "Craft!" oder Fehlermeldung
+    public Transform craftingResultSlot;                 // UI-Slot für das hergestellte Item
     private LootManager lootManager;
 
     private void Start()
@@ -18,20 +32,26 @@ public class CraftingManager : MonoBehaviour
         UpdateCraftButton();
     }
 
-    // Wird aufgerufen, wenn ein Item in einen Crafting-Slot gelegt oder entfernt wird
+    /// <summary>
+    /// Wird aufgerufen, wenn sich ein Crafting-Slot verändert (Item rein/raus).
+    /// </summary>
     public void OnCraftingSlotChanged()
     {
         UpdateCraftButton();
     }
 
-    // Überprüft, ob der Crafting-Prozess gestartet werden kann
+    /// <summary>
+    /// Aktiviert oder deaktiviert den Crafting-Button basierend auf Gültigkeit der Kombination.
+    /// </summary>
     private void UpdateCraftButton()
     {
         bool canCraft = CanCraft();
         craftButtonText.text = canCraft ? "Craft!" : "Invalid Combination";
     }
 
-    // Überprüft, ob die vier Items kombiniert werden können
+    /// <summary>
+    /// Überprüft, ob vier gültige Items vorhanden sind, alle mit derselben Seltenheit.
+    /// </summary>
     private bool CanCraft()
     {
         if (craftingSlots.Length < 4) return false;
@@ -44,47 +64,40 @@ public class CraftingManager : MonoBehaviour
             if (item == null) return false;
 
             if (rarity == null)
-            {
                 rarity = item.rarity;
-            }
             else if (item.rarity != rarity)
-            {
                 return false;
-            }
         }
 
         return true;
     }
 
-    // Der Crafting-Prozess, der aufgerufen wird, wenn der Spieler auf den Craft-Button klickt
+    /// <summary>
+    /// Führt den Crafting-Prozess aus, erzeugt ein neues Item und fügt es dem Inventar hinzu.
+    /// </summary>
     public void Craft()
     {
         if (!CanCraft()) return;
 
-        // Berechne die Basiswerte der kombinierten Items
         GameItem craftedItem = CalculateCraftedItem();
 
-        // Entferne die Items aus den Crafting-Slots und füge das neue Item dem Inventar hinzu
         foreach (var slot in craftingSlots)
         {
-            slot.ClearSlot();
+            slot.ClearSlot(); // Leere die Crafting-Slots
         }
 
-        // Setze das erstellte Item in den Crafting-Result-Slot
-        DisplayCraftedItem(craftedItem);
-
-        // Füge das Item dem Inventar hinzu
-        inventoryManager.AddItem(craftedItem, craftedItem.itemLevel);
-
+        DisplayCraftedItem(craftedItem); // Zeige Item im UI
+        inventoryManager.AddItem(craftedItem, craftedItem.itemLevel); // Inventar hinzufügen
         UpdateCraftButton();
     }
 
-    // Berechnet das resultierende Item basierend auf den kombinierten Items
+    /// <summary>
+    /// Berechnet ein neues Item, basierend auf dem Durchschnitt der Werte der kombinierten Items.
+    /// </summary>
     private GameItem CalculateCraftedItem()
     {
         GameItem newItem = CreateBaseItemFromCrafting(); // Erstellt ein Basisitem
 
-        // Berechne den Durchschnitt des Item-Levels der verwendeten Items
         int totalItemLevel = 0;
         float totalHealth = 0, totalMana = 0, totalMinDamage = 0, totalMaxDamage = 0;
         float totalArmor = 0, totalCritChance = 0, totalCritDamage = 0, totalMoveSpeed = 0;
@@ -93,8 +106,6 @@ public class CraftingManager : MonoBehaviour
         {
             GameItem item = slot.GetItem();
             totalItemLevel += item.itemLevel;
-
-            // Basiswerte aufsummieren
             totalHealth += item.health;
             totalMana += item.mana;
             totalMinDamage += item.minDamage;
@@ -105,10 +116,9 @@ public class CraftingManager : MonoBehaviour
             totalMoveSpeed += item.moveSpeed;
         }
 
-        int averageItemLevel = Mathf.RoundToInt(totalItemLevel / craftingSlots.Length);
+        int avgLevel = Mathf.RoundToInt(totalItemLevel / craftingSlots.Length);
 
-        // Werte des neuen Items setzen
-        newItem.itemLevel = averageItemLevel;
+        newItem.itemLevel = avgLevel;
         newItem.health = totalHealth / craftingSlots.Length;
         newItem.mana = totalMana / craftingSlots.Length;
         newItem.minDamage = totalMinDamage / craftingSlots.Length;
@@ -121,17 +131,21 @@ public class CraftingManager : MonoBehaviour
         return newItem;
     }
 
-    // Erstelle ein Basis-Item für das Crafting-Ergebnis
+    /// <summary>
+    /// Erstellt ein neues Basis-Item mit erhöhter Seltenheit basierend auf dem ersten Item.
+    /// </summary>
     private GameItem CreateBaseItemFromCrafting()
     {
         GameItem newItem = ScriptableObject.CreateInstance<GameItem>();
         newItem.rarity = GetNextRarity(craftingSlots[0].GetItem().rarity);
         newItem.name = $"{newItem.rarity} Crafted Item";
-        newItem.stackable = false; // Angenommen, es ist kein stapelbares Item
+        newItem.stackable = false;
         return newItem;
     }
 
-    // Bestimme die nächste Seltenheit basierend auf der aktuellen Seltenheit
+    /// <summary>
+    /// Gibt die nächsthöhere Rarity zurück.
+    /// </summary>
     private Rarity GetNextRarity(Rarity currentRarity)
     {
         return currentRarity switch
@@ -144,21 +158,20 @@ public class CraftingManager : MonoBehaviour
         };
     }
 
-    // Zeige das hergestellte Item im Crafting-Result-Slot an
+    /// <summary>
+    /// Zeigt das hergestellte Item im UI-Slot inklusive Hintergrundbild und Icon.
+    /// </summary>
     private void DisplayCraftedItem(GameItem craftedItem)
     {
-        // Entferne altes Ergebnis
         foreach (Transform child in craftingResultSlot)
         {
-            Destroy(child.gameObject);
+            Destroy(child.gameObject); // Vorherige Darstellung löschen
         }
 
-        // Erstelle ein neues Inventory-Item im Crafting-Result-Slot
         GameObject newInventoryItem = Instantiate(inventoryItemPrefab, craftingResultSlot);
         InventoryItem inventoryItemComponent = newInventoryItem.GetComponent<InventoryItem>();
         inventoryItemComponent.InitialiseItem(craftedItem);
 
-        // Setze den Hintergrund basierend auf der Seltenheit des Items
         GameObject backgroundPrefab = lootManager.GetBackgroundPrefabByRarity(craftedItem.rarity);
         if (backgroundPrefab != null)
         {
@@ -166,7 +179,6 @@ public class CraftingManager : MonoBehaviour
             backgroundObject.transform.SetAsFirstSibling();
         }
 
-        // Setze das Icon des Items
         if (craftedItem.image != null)
         {
             inventoryItemComponent.image.sprite = craftedItem.image;

@@ -1,3 +1,36 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       SpawnsDamagePopups.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Dieses Skript verwaltet das Erzeugen und Verwalten von Schadens-Popups, die im Spiel erscheinen, wenn der Spieler Schaden erleidet.
+ *               Es nutzt ein Objekt-Pool-Design, um Popup-Objekte effizient zu erstellen und wiederzuverwenden, um die Leistung zu optimieren.
+ *
+ * Hauptfunktionen:
+ * - Instanziierung von Schadens-Popup-Objekten (DamageLabel) bei Schaden.
+ * - Verwaltung des Objektspeichers mittels eines ObjectPools für die Popup-Labels, um unnötige Instanziierungen zu vermeiden.
+ * - Anzeige der Schadenswerte auf der Benutzeroberfläche in Form von Popups an einer bestimmten Position auf dem Bildschirm.
+ * - Möglichkeit zur Unterscheidung zwischen normalen und kritischen Treffern durch die Darstellung von hervorgehobenen Popups.
+ *
+ * Abhängigkeiten:
+ * - `DamageLabel`: Ein Prefab, das das Schadens-Popup darstellt, das die Schadenswerte anzeigt.
+ * - `ObjectPool`: Ein Pool-Objekt, das die Instanziierung und Wiederverwendung von `DamageLabel`-Objekten verwaltet.
+ * 
+ * UI-Elemente:
+ * - `DamageLabel`: Ein Pop-up-UI-Element, das den Schadenswert anzeigt.
+ *
+ * Ereignis-Handling:
+ * - Es wird auf Szenenwechsel reagiert, um sicherzustellen, dass die Kamera immer korrekt zugewiesen wird.
+ *
+ * Wichtige Hinweise:
+ * - Das System verwendet die `ObjectPool`-Klasse, um die Instanziierung von Objekten zu optimieren, indem es bereits existierende Objekte erneut verwendet, anstatt neue zu erstellen und zu zerstören.
+ * - Die Anzeige der Schadens-Popups wird über die Methode `DamageDone` ausgelöst, die den Schadenswert sowie eine Position auf dem Bildschirm übergibt.
+ * - Der `DamageLabel` wird nach der Anzeige wieder in den Pool zurückgegeben, um die Effizienz zu maximieren.
+ * ------------------------------------------------------------------------------
+ */
+
+
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;

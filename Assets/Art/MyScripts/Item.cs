@@ -1,3 +1,11 @@
+/*
+ * Item.cs
+ * 
+ * Author: Jonas Hammer
+ * Description: Repräsentiert ein Spielgegenstand als ScriptableObject. Enthält Basiswerte, Verzauberungen und Berechnungen für Verkaufswert, Skalierung und Verzauberungen je nach Seltenheit.
+ * Last Edited: 16. April 2025
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

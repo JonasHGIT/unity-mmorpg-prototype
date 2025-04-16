@@ -1,3 +1,37 @@
+/*
+ * ------------------------------------------------------------------------------
+ * Script:       Interactable.cs
+ * Author:       Jonas Hammer
+ * Created:      [Erstellungsdatum]
+ * Last Edited:  16. April 2025
+ * Description:  Basisklasse für alle interaktiven Objekte im Spiel. Stellt
+ *               grundlegende Funktionen für Hover-Text, Interaktion und
+ *               Abstandsprüfung zur Verfügung.
+ *
+ * Hauptfunktionen:
+ * - Anzeige eines Hover-Textes bei Maus-Hover über das Objekt
+ * - Virtuelle `Interact()`-Methode für spezifische Interaktionen
+ * - Gizmo-Darstellung des Interaktionsradius in der Szene
+ * - Coroutine zur Distanzüberprüfung und automatischen Interaktion
+ *
+ * Unterstützt:
+ * - Erweiterung durch Vererbung (z. B. `ItemPickup`, NPC-Dialoge, Türen)
+ * - Nahtlose Integration mit TextMeshPro für UI-Anzeigen
+ * - Dynamische Interaktionen basierend auf Spielerposition
+ *
+ * Dependencies:
+ * - PlayerController.cs
+ * - TextMeshProUGUI (für Hover-Text-Anzeige)
+ * - NavMeshAgent (zur Bewegung/Abbruch bei Interaktion)
+ *
+ * Hinweise:
+ * - Der Name des GameObjects für Hover-Text muss „HoverText“ lauten
+ * - Die `Interact()`-Methode sollte in abgeleiteten Klassen überschrieben werden
+ * - Interaktionsradius kann im Inspector angepasst werden
+ * ------------------------------------------------------------------------------
+ */
+
+
 using UnityEngine;
 using TMPro;
 using System.Collections;
