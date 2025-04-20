@@ -13,6 +13,18 @@
 /exe/
 /*.exe
 
+# Ignore large Unity build files
+*.resS
+*.data
+*.exe
+*.apk
+*.zip
+
+# Ignore build folders
+Build/
+exe/
+
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
